@@ -75,3 +75,11 @@ def delete(id):
     sql = "DELETE FROM bittings WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+
+# Function to update the information of a bitting
+def update(bitting):
+    sql = "UPDATE bittings SET (human_id, zombie_id) = (%s, %s) WHERE id = %s"
+    id = bitting.id
+    values = [bitting.human.id, bitting.zombie.id, id]
+    run_sql(sql, values)
