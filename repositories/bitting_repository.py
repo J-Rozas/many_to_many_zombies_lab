@@ -29,14 +29,17 @@ def select_all():
         # human that was bitten
         human = human_repository.select(bite['human_id'])
 
-        list_of_bittings.append(Bitting(human, zombie))
+        # id of the bite
+        id = bite['id']
+
+        list_of_bittings.append(Bitting(human, zombie, id))
 
     # return a list of instances of Bitting that is then looped through in the template in order to show each element
     return list_of_bittings
 
 def save(bitting):
     # SQL query to insert a new bitting into the table bittings
-    sql = "INSERT INTO bittings (human_id, zombie_id) VALUES (%s, %s) returning id"
+    sql = "INSERT INTO bittings (human_id, zombie_id) VALUES (%s, %s) RETURNING id"
 
     # Values that are to be passed into the SQL query, which come from the argument passed into the function
     values = [bitting.human.id, bitting.zombie.id]
@@ -55,12 +58,20 @@ def save(bitting):
 def select(id):
     sql = "SELECT * FROM bittings WHERE id = %s"
     values = [id]
-
-    result = run_sql(sql, values)
-
-    return result[0]
+    result = run_sql(sql, values)[0]
+    human = human_repository.select(result["human_id"])
+    zombie = zombie_repository.select(result["zombie_id"])
+    bitting = Bitting(human, zombie, result["id"])
+    return bitting
 
 # Function to delete all the bittings
 def delete_all():
     sql = "DELETE FROM bittings"
     run_sql(sql)
+
+
+# Function to delete a bitting based on its ID
+def delete(id):
+    sql = "DELETE FROM bittings WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
