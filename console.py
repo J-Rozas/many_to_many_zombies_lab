@@ -1,5 +1,5 @@
-# from models.bitting import Bitting
-# import repositories.bitting_repository as bitting_repository
+from models.bitting import Bitting
+import repositories.bitting_repository as bitting_repository
 
 from models.human import Human
 import repositories.human_repository as human_repository
@@ -42,14 +42,14 @@ zombie_repository.save(zombie_1)
 zombie_2 = Zombie("Pete", zombie_type_1)
 zombie_repository.save(zombie_2)
 
-# bitting_1 = Bitting(human_2, zombie_2)
-# bitting_repository.save(bitting_1)
+bitting_1 = Bitting(human_2, zombie_2)
+bitting_repository.save(bitting_1)
 
-# bitting_2 = Bitting(human_3, zombie_1)
-# bitting_repository.save(bitting_2)
+bitting_2 = Bitting(human_3, zombie_1)
+bitting_repository.save(bitting_2)
 
-# bitting_3 = Bitting(human_3, zombie_2)
-# bitting_repository.save(bitting_3)
+bitting_3 = Bitting(human_3, zombie_2)
+bitting_repository.save(bitting_3)
 
-# bitting_4 = Bitting(human_4, zombie_2)
-# bitting_repository.save(bitting_4)
+bitting_4 = Bitting(human_4, zombie_2)
+bitting_repository.save(bitting_4)
