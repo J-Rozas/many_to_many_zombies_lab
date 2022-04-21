@@ -49,3 +49,7 @@ def create_bitting():
 # UPDATE
 
 # DELETE
+@bittings_blueprint.route("/bittings/<id>/delete", methods=["POST"])
+def delete_bitting(id):
+    bitting_repository.delete(id)
+    return redirect("/bittings")
