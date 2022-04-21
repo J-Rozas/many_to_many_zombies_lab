@@ -39,7 +39,7 @@ def save(bitting):
     sql = "INSERT INTO bittings (human_id, zombie_id) VALUES (%s, %s) returning id"
 
     # Values that are to be passed into the SQL query, which come from the argument passed into the function
-    values = [bitting.human, bitting.zombie]
+    values = [bitting.human.id, bitting.zombie.id]
 
     # Run the SQL query and store what the function returns (a list of dictionaries) into a variable called results
     results = run_sql(sql, values)
