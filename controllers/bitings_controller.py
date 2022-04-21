@@ -4,7 +4,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 from models.biting import Biting
 
 # import the required repository
-from repositories import biting_repository
+from repositories import biting_repository, zombie_repository, human_repository
 
 bitings_blueprint = Blueprint("bitings", __name__)
 
@@ -16,6 +16,13 @@ def bitings():
 
 
 # NEW
+@bitings_blueprint.route("/bitings/new")
+def new_biting():
+    all_humans = human_repository.select_all()
+    all_zombies = zombie_repository.select_all()
+
+    return render_template("/bitings/new.html", humans = all_humans, zombies = all_zombies)
+
 
 # CREATE
 
