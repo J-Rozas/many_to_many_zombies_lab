@@ -33,3 +33,19 @@ def select_all():
 
     # return a list of instances of Biting that is then looped through in the template in order to show each element
     return list_of_bitings
+
+def save(biting):
+    # SQL query to insert a new biting into the table bitings
+    sql = "INSERT INTO bitings (human_id, zombie_id) VALUES (%s, %s) returning id"
+
+    # Values that are to be passed into the SQL query, which come from the argument passed into the function
+    values = [biting.human, biting.zombie]
+
+    # Run the SQL query and store what the function returns (a list of dictionaries) into a variable called results
+    results = run_sql(sql, values)
+
+    # Take the value of the "id" key of the first dictionary of the list stored in the variable results and store it in the variable id
+    id = results[0]["id"]
+
+    # Store the value kept in the variable id in the attribute "id" of the object biting of class Biting that what passed into the function
+    biting.id = id
