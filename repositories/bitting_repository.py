@@ -49,3 +49,13 @@ def save(bitting):
 
     # Store the value kept in the variable id in the attribute "id" of the object bitting of class Bitting that what passed into the function
     bitting.id = id
+
+
+# Function to be able to select one bitting
+def select(id):
+    sql = "SELECT * FROM bittings WHERE id = %s"
+    values = [id]
+
+    result = run_sql(sql, values)
+
+    return result[0]
