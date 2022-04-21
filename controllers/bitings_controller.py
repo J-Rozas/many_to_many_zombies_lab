@@ -25,6 +25,21 @@ def new_biting():
 
 
 # CREATE
+@bitings_blueprint.route("/bitings", methods=["POST"])
+def create_biting():
+    # Get the id of both the zombie and the human
+    zombie_id = request.form['zombie_id']
+    human_id = request.form['human_id']
+
+    # Create an instance of the class Biting
+    new_biting = Biting(human_id, zombie_id)
+    
+    # Save the new biting into the database
+    biting_repository.save(new_biting)
+
+    # Redirect back to the url with all the bitings
+    return redirect("/bitings")
+
 
 # EDIT
 
