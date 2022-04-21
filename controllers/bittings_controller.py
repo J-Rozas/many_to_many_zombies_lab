@@ -31,8 +31,11 @@ def create_bitting():
     zombie_id = request.form['zombie_id']
     human_id = request.form['human_id']
 
+    zombie_object = zombie_repository.select(zombie_id)
+    human_object = human_repository.select(human_id)
+
     # Create an instance of the class Bitting
-    new_bitting = Bitting(human_id, zombie_id)
+    new_bitting = Bitting(human_object, zombie_object)
     
     # Save the new bitting into the database
     bitting_repository.save(new_bitting)
