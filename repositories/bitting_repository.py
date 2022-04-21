@@ -59,3 +59,8 @@ def select(id):
     result = run_sql(sql, values)
 
     return result[0]
+
+# Function to delete all the bittings
+def delete_all():
+    sql = "DELETE FROM bittings"
+    run_sql(sql)

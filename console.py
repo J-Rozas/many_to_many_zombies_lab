@@ -10,7 +10,7 @@ import repositories.zombie_repository as zombie_repository
 from models.zombie_type import ZombieType
 import repositories.zombie_type_repository as zombie_type_repository
 
-# bitting_repository.delete_all()
+bitting_repository.delete_all()
 human_repository.delete_all()
 zombie_repository.delete_all()
 zombie_type_repository.delete_all()
