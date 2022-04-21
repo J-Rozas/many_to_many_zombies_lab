@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Add a New Biting</h2>
+<h2>Update a Bitting</h2>
 
-<form action="/bitings" method="POST">
+<form action="/bittings" method="POST">
     <div>
         <label for="human">Human:</label>
         <select name="human_id" id="human">
             {% for human in humans %}
-            <option value="{{ human.id }}">
+            <option value="{{ human.id }}" {% if human.id == bitting.human.id %} selected {% endif %}>
                 {{ human.name }}
             </option>
             {% endfor %}
@@ -18,7 +18,7 @@
         <label for="zombie">Zombie:</label>
         <select name="zombie_id" id="zombie">
             {% for zombie in zombies %}
-            <option value="{{ zombie.id }}">
+            <option value="{{ zombie.id }}" {% if zombie.id == bitting.zombie.id %} selected {% endif %}>
                 {{ zombie.name }}
             </option>
             {% endfor %}

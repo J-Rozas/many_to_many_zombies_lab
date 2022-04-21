@@ -1,4 +1,4 @@
-class Biting:
+class Bitting:
     def __init__(self, human, zombie, id=None):
         self.human = human
         self.zombie = zombie

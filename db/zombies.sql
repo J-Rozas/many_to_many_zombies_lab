@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS bitings;
+DROP TABLE IF EXISTS bittings;
 DROP TABLE IF EXISTS humans;
 DROP TABLE IF EXISTS zombies;
 DROP TABLE IF EXISTS zombie_types;
@@ -19,7 +19,7 @@ CREATE TABLE zombies (
     zombie_type_id INT REFERENCES zombie_types(id)
 );
 
-CREATE TABLE bitings (
+CREATE TABLE bittings (
     id SERIAL PRIMARY KEY,
     zombie_id SERIAL REFERENCES zombies(id),
     human_id SERIAL REFERENCES humans(id)

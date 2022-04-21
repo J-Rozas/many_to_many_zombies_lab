@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Bittings</h2>
+
+{% for bitting in bittings %}
+
+<section>
+    <p>{{ bitting.zombie.name }} bit {{ bitting.human.name }}</p>
+    <a href="/bittings/{{ bitting.id }}/edit">Edit</a>
+    <form action="/bittings/{{ bitting.id }}/delete" method="POST">
+        <input type="submit" value="Delete">
+    </form>
+</section>
+
+{% endfor %}
+{% endblock %}
