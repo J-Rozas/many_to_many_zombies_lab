@@ -53,3 +53,6 @@ bitting_repository.save(bitting_3)
 
 bitting_4 = Bitting(human_4, zombie_2)
 bitting_repository.save(bitting_4)
+
+bitting_4.zombie = zombie_1
+bitting_repository.update(bitting_4)
